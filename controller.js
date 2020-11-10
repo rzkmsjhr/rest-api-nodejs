@@ -57,13 +57,28 @@ exports.updatemahasiswa = function(req, res){
     var nama = req.body.nama;
     var jurusan = req.body.jurusan;
 
-    connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? where id_mhs=?', [nim, nama, jurusan, id], 
+    connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mhs=?', [nim, nama, jurusan, id], 
     function(error, rows, fields){
         if(error){
             console.log(error);
         }
         else {
             response.ok("Update success.", res);
+        }
+    });
+}
+
+//delete data by id mahasiswa
+exports.deletemahasiswa = function(req, res){
+    var id = req.body.id_mhs;
+
+    connection.query('DELETE FROM mahasiswa WHERE id_mhs=?', [id], 
+    function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }
+        else {
+            response.ok("Delete success.", res);
         }
     });
 }

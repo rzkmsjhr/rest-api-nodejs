@@ -8,4 +8,5 @@ module.exports = function(app) {
     app.route('/mahasiswa/:id').get(myjson.IDmahasiswa);
     app.route('/insert/').post(myjson.insertmahasiswa);
     app.route('/update/').put(myjson.updatemahasiswa);
+    app.route('/delete/').delete(myjson.deletemahasiswa);
 }
