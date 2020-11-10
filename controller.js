@@ -9,13 +9,42 @@ exports.index = function(req, res){
 };
 
 //get all data mahasiswa
-exports.allmahasiswa = function(req, res){
+exports.mahasiswa = function(req, res){
     connection.query('SELECT * FROM mahasiswa', function(error, rows, fields){
         if(error){
-            connection.log(error);
+            console.log(error);
         }
         else {
             response.ok(rows, res);
+        }
+    });
+};
+
+//get data mahasiswa by ID
+exports.IDmahasiswa = function(req, res){
+    let id  = req.params.id;
+    connection.query('SELECT * FROM mahasiswa WHERE id_mhs = ?', [id] , function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }
+        else {
+            response.ok(rows, res);
+        }
+    });
+};
+
+//insert data mahasiswa
+exports.insertmahasiswa = function(req, res){
+    var nim = req.body.nim;
+    var nama = req.body.nama;
+    var jurusan = req.body.jurusan;
+
+    connection.query('INSERT INTO mahasiswa (nim, nama, jurusan) VALUES (?,?,?)', [nim, nama, jurusan], function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }
+        else {
+            response.ok("Insert success.", res);
         }
     });
 };
