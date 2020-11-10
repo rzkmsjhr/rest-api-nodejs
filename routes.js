@@ -9,4 +9,5 @@ module.exports = function(app) {
     app.route('/insert/').post(myjson.insertmahasiswa);
     app.route('/update/').put(myjson.updatemahasiswa);
     app.route('/delete/').delete(myjson.deletemahasiswa);
+    app.route('/groupmatkul/').get(myjson.matkulgroup);
 }
