@@ -99,3 +99,7 @@ exports.login = function(req, res){
         }
     });
 }
+
+exports.secretpage = function(req, res){
+    response.ok("This page for user that has role = 2", res)
+}
